@@ -68,7 +68,20 @@ Authorization: Basic admin:
 ### Read Orders via OData V4
 GET http://localhost:4004/admin/Orders
 Authorization: Basic admin:
-
+### any filter on attribute works
+GET http://localhost:4004/admin/Orders
+  ?$count=true
+  &$expand=Items($expand=book($expand=currency))
+  &$filter=Items/any(item:item/book_ID eq 252)
+Authorization: Basic admin:
+### any filter on a to one relationship returns
+### SQLITE_ERROR: no such column: book_currency_code
+### Works with HANA
+GET http://localhost:4004/admin/Orders
+  ?$count=true
+  &$expand=Items($expand=book($expand=currency))
+  &$filter=Items/any(item:item/book/currency_code%20eq%20'USD')
+Authorization: Basic admin:
 ### Read Orders via OData V2
 GET http://localhost:4004/v2/admin/Orders
 Authorization: Basic admin:

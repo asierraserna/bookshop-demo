@@ -25,7 +25,8 @@ annotate AdminService.Orders with @(
       deliverystatus.name,
       orderstatus_code,
       Items.product,
-      salesOrganization
+      salesOrganization,
+      Items.book.currency_code
     ],
     PresentationVariant         : {
       $Type     : 'UI.PresentationVariantType',
