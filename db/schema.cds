@@ -200,6 +200,7 @@ entity Orders : cuid, managed {
 
 entity OrderItems : cuid {
   parent    : Association to Orders not null;
+  @assert.target
   book      : Association to Books;
   product   : SEPMRA_I_Product_E:Product;
   amount    : Integer;

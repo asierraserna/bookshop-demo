@@ -49,6 +49,7 @@ Content-Type: application/json
 
 {
     "OrderNo": "10",
+    "salesOrganization": "1000",
     "CustomerOrderNo": "Order from john",
     "currency_code": "EUR",
     "Items": [
